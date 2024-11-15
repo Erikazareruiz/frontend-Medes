@@ -8,19 +8,22 @@ const DatosMedicos= () => {
   const [altura, setAltura] = useState('');
   const [peso, setPeso] = useState('');
   const [tension, setTension] = useState(''); 
+  const [fr, setFr] = useState(''); 
+  const [fc, setFc] = useState(''); 
+  const [temperatura, setTemperatura] = useState(''); 
   const [message, setMessage] = useState('');
 
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
 
-    if ( !dni|| !name || !apellidoP || !fecha || !altura || !peso || !tension) {
+    if ( !dni|| !name || !apellidoP || !fecha || !altura || !peso || !tension || !fr || !fc || !temperatura) {
       setMessage('Por favor, complete todos los campos.');
       return;
     }
 
     // Aquí agregarías la lógica para enviar los datos a una API o guardarlos en una base de datos
-    console.log('Datos del paciente:', { dni, name,apellidoP, fecha, altura, peso, tension});
+    console.log('Datos del paciente:', { dni, name,apellidoP, fecha, altura, peso, tension,fr,fc,temperatura});
     setMessage('¡Registro completado con éxito!');
     
     // Limpiar el formulario después de guardar los datos
@@ -30,7 +33,10 @@ const DatosMedicos= () => {
     setfecha('');
     setAltura('');
     setPeso('');
-    setTension('')
+    setTension('');
+    setFr('');
+    setFc('');
+    setTemperatura ('')
   };
 
   return (
@@ -106,10 +112,41 @@ const DatosMedicos= () => {
             id="tension"
             placeholder="Tension del Paciente"
             value={peso}
-            onChange={(e) => setPeso(e.target.value)}
+            onChange={(e) => setTension(e.target.value)}
           />
         </div>
-        
+
+        <div>
+          <label htmlFor="fr">Frecuencia Respiratoria: </label>
+          <input
+            type="fr"
+            id="fr"
+            placeholder="Frecuencia Respiratoria"
+            value={peso}
+            onChange={(e) => setFr(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="fc">Frecuencia Cardiaca: </label>
+          <input
+            type="fc"
+            id="fc"
+            placeholder="Frecuencia Cardiaca"
+            value={peso}
+            onChange={(e) => setFc(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="temperatura">Temperatura: </label>
+          <input
+            type="temperatura"
+            id="temperatura"
+            placeholder="Temperatura"
+            value={peso}
+            onChange={(e) => setTemperatura(e.target.value)}
+          />
+        </div> 
+
         {message && <div className="message">{message}</div>}
         <button type="submit" className="submit-button">Registrar Datos del Paciente</button>
       </form>
