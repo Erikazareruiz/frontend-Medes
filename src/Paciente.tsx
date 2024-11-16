@@ -5,6 +5,7 @@ const Paciente= () => {
   const [name, setName] = useState('');
   const [apellidoP, setApellidoP] = useState('');
   const [apellidoM, setApellidoM] = useState('');
+  const [fecnacimiento, setFecnacimiento] = useState('');
   const [gender, setGender] = useState('');
   const [age, setAge] = useState('');
   const [estcivil, setEstcivil] = useState('');
@@ -17,13 +18,13 @@ const Paciente= () => {
   const handleSubmit = (e:any) => {
     e.preventDefault();
 
-    if ( !dni|| !name || !apellidoP || !apellidoM || !age || !gender || !estcivil || !direccion || !phone || !email || !antecedentes) {
+    if ( !dni|| !name || !apellidoP || !apellidoM|| !fecnacimiento  || !age || !gender || !estcivil || !direccion || !phone || !email || !antecedentes) {
       setMessage('Por favor, complete todos los campos.');
       return;
     }
 
     // Aquí agregarías la lógica para enviar los datos a una API o guardarlos en una base de datos
-    console.log('Datos del paciente:', { dni, name,apellidoP, apellidoM, age, gender, estcivil, direccion, phone, email, antecedentes });
+    console.log('Datos del paciente:', { dni, name,apellidoP, apellidoM, fecnacimiento, age, gender, estcivil, direccion, phone, email, antecedentes });
     setMessage('¡Registro completado con éxito!');
     
     // Limpiar el formulario después de guardar los datos
@@ -31,6 +32,7 @@ const Paciente= () => {
     setName('');
     setApellidoP('');
     setApellidoM('');
+    setFecnacimiento('');
     setAge('');
     setGender('');
     setEstcivil('');
@@ -47,7 +49,7 @@ const Paciente= () => {
       <div>
           <label htmlFor="dni">DNI: </label>
           <input
-            type="dni"
+            type="number"
             id="dni"
             placeholder="Número de DNI"
             value={dni}
@@ -85,6 +87,16 @@ const Paciente= () => {
           />
         </div>
         <div>
+          <label htmlFor="fecnacimiento">Fecha de Nacimiento: </label>
+          <input
+            type="text"
+            id="fecnacimiento"
+            placeholder="Ingresar Fecha de nacimiento"
+            value={fecnacimiento}
+            onChange={(e) => setFecnacimiento(e.target.value)}
+          />
+        </div>
+        <div>
           <label htmlFor="age">Edad: </label>
           <input
             type="number"
@@ -117,6 +129,17 @@ const Paciente= () => {
             <option value="soltero">Soltero</option>
             <option value="casado">Casado</option>
           </select>
+        </div>
+
+        <div>
+          <label htmlFor="direccion">Direccion: </label>
+          <input
+            type="text"
+            id="direccion"
+            placeholder="Ingresar Direccion"
+            value={direccion}
+            onChange={(e) => setDireccion(e.target.value)}
+          />
         </div>
         <div>
           <label htmlFor="phone">Teléfono: </label>
