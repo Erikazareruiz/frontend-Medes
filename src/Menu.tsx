@@ -1,10 +1,10 @@
 // App.tsx
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Paciente from './Paciente'; // Importa el componente Paciente
 import DatosMedicos from './DatosMedicos';
 import PatientSearch from './PatientSearch';
 import './App.css'; // Puedes usar App.css para añadir estilos a tu menú
+import Login from './Login';
 
 const App = () => {
   return (
@@ -22,6 +22,7 @@ const App = () => {
         {/* Rutas */}
         <div className="content">
           <Routes>
+          <Route path='/login' element={<Login/>}/>
           <Route path="/paciente" element={<Paciente />} />
           <Route path="/DatosMedicos" element={<DatosMedicos />} />
           <Route path="/PatientSearch" element={<PatientSearch />} />

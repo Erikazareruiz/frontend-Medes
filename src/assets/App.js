@@ -13,6 +13,7 @@ function App() {
       <NavigationBar />
       <div className="container">
         <Routes>
+          <Route path='/login' element={<Login/>}/>
           <Route path="/paciente" element={<Paciente />} />
           <Route path="/DatosMedicos" element={<Login />} />
           <Route path="/menu" element={<Menu />} />
@@ -24,5 +25,3 @@ function App() {
 }
 
 export default App;
-
-

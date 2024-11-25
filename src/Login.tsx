@@ -21,13 +21,8 @@ const Login = () => {
   };
  
   return (
-
     <div className="login-container">
-
-   
-
       <div>
- 
         <a href="https://medescajamarca.com/wp-content/uploads/2019/07/MEDES-logo.png" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
