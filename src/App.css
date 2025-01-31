@@ -1,12 +1,13 @@
 .login-container {
   max-width: 400px;
-  margin: 100px auto;
+  margin: 0 auto; /* Centrado horizontal */
   padding: 40px 30px;
   border: 10px;
   border-radius: 10px;
   background: linear-gradient(145deg, #ffffff, #f1f5f9);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
   text-align: center;
+  
 }
 
 /* Títulos */
