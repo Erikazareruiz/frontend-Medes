@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-//import viteLogo from '/vite.svg'
-import reactLogo from './assets/logo.png'
-
+import { useNavigate } from 'react-router-dom';
+import reactLogo from './assets/logo.png';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -16,10 +16,26 @@ const Login = () => {
       return;
     }
 
-    console.log('Iniciando sesión con', username, password);
-    setError('');
+    try {
+      const response = await fetch(`http://localhost:8080/api/v2/user/getByUsername/${username}`);
+
+      if (!response.ok) {
+        throw new Error('Error en la autenticación');
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data && data.password === password) {
+        navigate('/menu');
+      } else {
+        setError('Usuario o contraseña incorrectos');
+      }
+    } catch (error) {
+      setError('Error en la autenticación');
+    }
   };
- 
+
   return (
     <div className="login-container">
       <div>
@@ -54,7 +70,7 @@ const Login = () => {
         <button type="submit">INGRESAR</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default Login;

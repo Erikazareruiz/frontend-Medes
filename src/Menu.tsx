@@ -8,7 +8,7 @@ import Login from './Login';
 
 const App = () => {
   return (
-    <Router>
+
       <div>
         {/* Menú de navegación */}
         <nav className="menu">
@@ -29,7 +29,7 @@ const App = () => {
           </Routes>
         </div>
       </div>
-    </Router>
+
   );
 };
 
